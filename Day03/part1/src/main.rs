@@ -44,30 +44,20 @@ fn main() -> std::io::Result<()> {
                 priority[0] = priority[0] - 96;
             }
 
-
             // For the first half of the bag, just set a bit in the chars_used bit array
             if index < compartment_size {
                 chars_used = chars_used | (1 << priority[0]);
             }
             else if (chars_used & (1 << priority[0]))  != 0 {  // In the second act, we check each priority to see if it has been used
-                print!("   !!!MISMATCH: {}={} ", c, priority[0]);
-
                 // update score and short-circuit the loop
                 score += u64::from(priority[0]);
                 break;
             }
 
-
-            print!("{} ", priority[0]);
             index += 1;
         }
-        println!();
-        println!("{:#064b}", chars_used);
-        println!();
     }
 
-
-    // print result
     println!("score:  {}", score);
     Ok(())
 }

@@ -8,7 +8,6 @@ use std::fs::File;
 use std::io::{prelude::*, BufReader}; // for reading line-by-line
 
 
-
 const ELVES_PER_GROUP: usize = 3;
 
 
@@ -35,7 +34,6 @@ fn main() -> std::io::Result<()> {
         let lstr = line.unwrap().clone(); 
         let char_iter = lstr.chars();
 
-
         for c in char_iter {
             let mut priority = [0; 1];
             
@@ -51,37 +49,27 @@ fn main() -> std::io::Result<()> {
 
             // set bit corresponding to character received
             chars_used[elf_num] = chars_used[elf_num] | (1 << priority[0]);
-            print!("{} ", priority[0]);
         }
-        println!();
-
 
         // track which group & which elfwe're handling
         elf_num += 1;
         if elf_num >= ELVES_PER_GROUP {
             // we're at the end of the group, so compare the bitmaps
-            // the cool thing here is that the priority is EXACTLY equal
-            // to the number of trailing zeros.
+
             shared_chars = chars_used[0];
             for i in 1..ELVES_PER_GROUP {
                 shared_chars &= chars_used[i];
             }
 
+            // the cool thing here is that the priority is EXACTLY equal
+            // to the number of trailing zeros.
             score += u64::from(shared_chars.trailing_zeros());
-
-            for i in 0..ELVES_PER_GROUP {
-                println!("{:#064b}", chars_used[i]);
-            }
-            println!("{:#064b}", shared_chars);
-            println!("{}\n", shared_chars.trailing_zeros());
-
 
             // reset data and move to next group
             elf_num = 0;
             chars_used = [0; ELVES_PER_GROUP];
         }
     }
-
 
     // print result
     println!("score:  {}", score);
