@@ -22,7 +22,7 @@ fn main() -> std::io::Result<()> {
 
     let mut elf_num = 0;         // track which elf in each group
     let mut chars_used: [u64; ELVES_PER_GROUP] = [0; ELVES_PER_GROUP]; // bits correspond to priorities that have been used.
-    let mut shared_chars: u64 = 0;
+    let mut shared_chars: u64;
 
     let mut score: u64 = 0;
 
