@@ -1,4 +1,4 @@
-// `cargo run -- search_text input.txt`
+// `cargo run -- search_text ../input.txt`
 
 // args
 use std::env;
