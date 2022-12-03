@@ -50,17 +50,17 @@ fn get_score(col1: &str, col2: &str) -> u64 {
                 _ => 0,
             },
         "B" => match col2 {
-            "X" => 0,
-            "Y" => 3,
-            "Z" => 6,
-            _ => 0,
-        },
+                "X" => 0,
+                "Y" => 3,
+                "Z" => 6,
+                _ => 0,
+            },
         "C" => match col2 {
-            "X" => 6,
-            "Y" => 0,
-            "Z" => 3,
-            _ => 0,
-        },
+                "X" => 6,
+                "Y" => 0,
+                "Z" => 3,
+                _ => 0,
+            },
         _   => 0,
 
     // add points for whether you chose rock, paper, or scissors
